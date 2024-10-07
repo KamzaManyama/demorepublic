@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/dashStyling.css">
+    <title>User Dashboard</title>
+    <style>
+        /* User Profile Section Styles */
+        main {
+            flex-grow: 1; /* Allows main to fill available space */
+            padding: 20px;
+            background-color: #fff;
+            margin: 10px; /* Margin for aesthetics */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #user-profile {
+            max-width: 600px; /* Limit width for larger screens */
+            margin: 0 auto; /* Center the profile section */
+            padding: 15px;
+        }
+
+        .profile-info p {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        input[type="text"], input[type="email"] {
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #f0c300;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #e0b200; /* Darker yellow on hover */
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            main {
+                margin: 5px; /* Reduce margins on smaller screens */
+                padding: 15px; /* Reduce padding */
+            }
+
+            #user-profile {
+                width: 100%; /* Full width on small screens */
+                padding: 10px; /* Padding for user profile */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile-info p {
+                font-size: 14px; /* Smaller font size */
+            }
+
+            label {
+                font-size: 12px; /* Smaller label font size */
+            }
+
+            button {
+                width: 100%; /* Full width button on small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <header class="header">
+            <h1>User Dashboard</h1>
+            <div class="burger-menu" onclick="toggleMenu()">
+                <div class="burger-line"></div>
+                <div class="burger-line"></div>
+                <div class="burger-line"></div>
+            </div>
+            <nav class="nav">
+                <ul id="nav-links">
+                    <li><a href="userDash.html">Home</a></li>
+                    <li><a href="userInfo.html">Profile</a></li>
+                    <li><a href="#">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        
+
+        <script>
+            function toggleMenu() {
+                const nav = document.querySelector('.nav');
+                nav.classList.toggle('active'); // Toggle the 'active' class
+            }
+        </script>
+        
+        <main>
+            <section id="user-profile">
+                <h2>User Profile</h2>
+                <div class="profile-info">
+                    <p><strong>Name:</strong> John</p>
+                    <p><strong>Surname:</strong> Doe</p>
+                    <p><strong>Phone Number:</strong> 123-456-7890</p>
+                    <p><strong>Email:</strong> johndoe@example.com</p>
+                </div>
+
+                <h3>Update Your Information</h3>
+                <form id="update-info-form">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" value="John" required>
+
+                    <label for="surname">Surname:</label>
+                    <input type="text" id="surname" name="surname" value="Doe" required>
+
+                    <label for="phone-number">Phone Number:</label>
+                    <input type="text" id="phone-number" name="phone-number" value="123-456-7890" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" value="johndoe@example.com" required>
+
+                  
+
+                    <button type="submit">Update Info</button>
+                </form>
+            </section>
+        </main>
+
+        <script>
+            
+
+            // Event listener for the form submission
+            document.getElementById('update-info-form').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                // Get form data
+                const name = document.getElementById('name').value;
+                const surname = document.getElementById('surname').value;
+                const phoneNumber = document.getElementById('phone-number').value;
+                const email = document.getElementById('email').value;
+               
+
+                // Here you can handle the form data, for example, send it to the server
+                console.log(`Updated Info: Name: ${name}, Surname: ${surname}, Phone: ${phoneNumber}, Email: ${email}, Block: ${blockNumber}, Room: ${roomNumber}, Unit: ${unit}`);
+
+                // Optionally, you can display a success message or update the displayed information
+                alert('Your information has been updated successfully!');
+            });
+        </script>
+
+        <footer class="footer">
+            <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

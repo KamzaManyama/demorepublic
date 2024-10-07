@@ -1,0 +1,110 @@
+/* General styles for the login page */
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full height of the viewport */
+    background-color: #f9f9f9; /* Background color for contrast */
+}
+
+.login-container {
+    background-color: #fff; /* White background for the login container */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 3rem; /* Padding for the container */
+    max-width: 400px; /* Maximum width for the container */
+    width: 100%; /* Full width on smaller screens */
+}
+
+h2 {
+    margin-bottom: 1.5rem; /* Space below the heading */
+    color: #18181b; /* Dark text color */
+}
+
+/* Form group styles */
+.form-group {
+    margin-bottom: 1.5rem; /* Space between form groups */
+}
+
+label {
+    display: block; /* Labels take up full width */
+    margin-bottom: 0.5rem; /* Space below the label */
+    font-weight: bold; /* Bold labels */
+}
+
+input {
+    width: 100%; /* Full width for inputs */
+    padding: 0.8rem; /* Padding for inputs */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 4px; /* Rounded corners */
+}
+
+/* Button styles */
+.btn-login {
+    background-color: #29292c; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* No border */
+    padding: 0.8rem; /* Padding for button */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    width: 100%; /* Full width for button */
+}
+
+.btn-login:hover {
+    background-color: #18181b; /* Darker color on hover */
+}
+
+/* Link styles */
+.signup-link {
+    margin-top: 1rem; /* Space above the link */
+    text-align: center; /* Center align the link */
+}
+
+.signup-link a {
+    color: #29292c; /* Link color */
+    text-decoration: none; /* Remove underline */
+}
+
+.signup-link a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+    .login {
+        padding: 1rem; /* Add padding on smaller screens */
+    }
+
+    .login-container {
+        padding: 1.5rem; /* Adjust padding inside the container */
+        max-width: 90%; /* Allow the container to take more width */
+    }
+
+    h2 {
+        font-size: 1.5rem; /* Adjust heading size for smaller screens */
+    }
+
+    .form-group {
+        margin-bottom: 1rem; /* Reduce space between form groups */
+    }
+
+    input {
+        padding: 0.6rem; /* Adjust input padding */
+    }
+
+    .btn-login {
+        padding: 0.6rem; /* Adjust button padding */
+        font-size: 1rem; /* Adjust button text size */
+    }
+}
+
+@media (max-width: 400px) {
+    h2 {
+        font-size: 1.25rem; /* Further reduce heading size */
+    }
+
+    .btn-login {
+        padding: 0.5rem; /* Further adjust button padding */
+        font-size: 0.9rem; /* Further reduce button text size */
+    }
+}

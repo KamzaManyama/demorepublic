@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/dashStyling.css">
+    <title>User Dashboard</title>
+</head>
+<body>
+    <div class="dashboard">
+        <header class="header">
+            <h1>User Dashboard</h1>
+            <div class="burger-menu" onclick="toggleMenu()">
+                <div class="burger-line"></div>
+                <div class="burger-line"></div>
+                <div class="burger-line"></div>
+            </div>
+            <nav class="nav">
+                <ul id="nav-links">
+                    <li><a href="userDash.html">Home</a></li>
+                    <li><a href="userInfo.html">Profile</a></li>
+                    <li><a href="#">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        
+
+        <script>
+            function toggleMenu() {
+                const nav = document.querySelector('.nav');
+                nav.classList.toggle('active'); // Toggle the 'active' class
+            }
+        </script>
+        
+        
+        
+        <div class="main-content">
+          
+
+            <section class="content">
+                <h2>Welcome, [User Name]</h2>
+             
+
+                <!-- Logs Table -->
+<div class="log-history">
+    <table class="log-table">
+        <thead>
+            <tr>
+                <th>Log ID</th>
+                <th>Block Number</th>
+                <th>Room Number</th>
+                <th class="unit-column">Unit</th> <!-- Unit column -->
+                <th>Status</th>
+                <th>Date Submitted</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>#001</td>
+                <td>Block A</td>
+                <td>Room 101</td>
+                <td class="unit-column">Air Conditioner</td> <!-- Unit column -->
+                <td>Pending</td>
+                <td>2024-10-01</td>
+            </tr>
+            <tr>
+                <td>#002</td>
+                <td>Block B</td>
+                <td>Room 203</td>
+                <td class="unit-column">Heater</td> <!-- Unit column -->
+                <td>In Progress</td>
+                <td>2024-10-05</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+                
+                <!-- Action Buttons -->
+                <div class="log-buttons">
+                    <button class="log-action" onclick="document.location='logSubmit.html'">Submit a New Log</button>
+                    <button class="log-ai-assist" onclick="document.location='handyAI.html'">Chat with AI Assistance</button>
+                </div>
+                
+                <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                <div class="chart-container">
+                    <canvas id="progressChart"></canvas>
+                </div>
+                
+            </section>
+        </div>
+        
+        <footer class="footer">
+            <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Sample data for the progress report (status of logs)
+        const logData = {
+            labels: ['Pending', 'In Progress', 'Completed'],
+            datasets: [{
+                label: 'Logs Status',
+                data: [10, 7, 20], // Replace with actual log counts
+                backgroundColor: ['#FF6384', '#36A2EB', '#4CAF50'], // Colors for different statuses
+                hoverBackgroundColor: ['#FF6384', '#36A2EB', '#4CAF50']
+            }]
+        };
+    
+        // Configuration for the chart
+        const config = {
+            type: 'doughnut', // Choose 'bar', 'line', 'pie', 'doughnut', etc.
+            data: logData,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Maintenance Logs Progress'
+                    }
+                }
+            }
+        };
+    
+        // Render the chart
+        const progressChart = new Chart(
+            document.getElementById('progressChart'),
+            config
+        );
+    </script>
+    
+</body>
+</html>

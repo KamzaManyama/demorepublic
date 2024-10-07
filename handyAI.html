@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/dashStyling.css">
+    <title>User Dashboard</title>
+    <style>
+        /* Chat container styles */
+        #chatbox {
+            width: 100%; /* Full width on small screens */
+            max-width: 600px; /* Maximum width for larger screens */
+            height: 500px; /* Fixed height for the chat */
+            margin: 20px auto; /* Center the chat box */
+            display: flex;
+            flex-direction: column; /* Stack elements vertically */
+            background-color: #fff; /* White background for a cleaner look */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+        }
+
+        .chat-header {
+           
+            color: black; /* Header text color */
+            padding: 15px; /* Padding for header */
+            text-align: center; /* Center text */
+            font-weight: bold; /* Bold text */
+            border-top-left-radius: 10px; /* Rounded corners for header */
+            border-top-right-radius: 10px; /* Rounded corners for header */
+        }
+
+        .chat-messages {
+            flex-grow: 1; /* Take available space */
+            padding: 10px; /* Padding for messages */
+            overflow-y: auto; /* Scrollable area for messages */
+            display: flex;
+            flex-direction: column; /* Stack messages vertically */
+            gap: 10px; /* Space between messages */
+        }
+
+        .message {
+            max-width: 75%; /* Limit message width */
+            padding: 10px; /* Padding for message */
+            border-radius: 20px; /* Rounded corners */
+            position: relative; /* Position for pseudo elements */
+            word-wrap: break-word; /* Break long words */
+        }
+
+        .message.user {
+            background-color: #dcf8c6; /* Light green for user messages */
+            align-self: flex-end; /* Align to the right */
+        }
+
+        .message.bot {
+            background-color: #e0e0e0; /* Gray for bot messages */
+            align-self: flex-start; /* Align to the left */
+        }
+
+        .chat-input {
+            display: flex; /* Flex for input area */
+            padding: 10px; /* Padding for input area */
+            background-color: #f1f1f1; /* Light gray background */
+            border-bottom-left-radius: 10px; /* Rounded corners */
+            border-bottom-right-radius: 10px; /* Rounded corners */
+        }
+
+        .chat-input input {
+            flex-grow: 1; /* Input takes available space */
+            padding: 10px; /* Padding for input */
+            border: none; /* Remove default border */
+            border-radius: 20px; /* Rounded corners */
+            margin-right: 10px; /* Space between input and button */
+            outline: none; /* Remove outline on focus */
+        }
+
+        .chat-input button {
+            padding: 10px; /* Padding for button */
+            border: none; /* Remove default border */
+            background-color: #0078d7; /* Button background color */
+            color: white; /* Button text color */
+            border-radius: 20px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor */
+        }
+
+      
+
+        /* Media Queries */
+        @media (max-width: 600px) {
+            #chatbox {
+                width: 100%; /* Use more width on small screens */
+                height: 90%; /* Adjust height for smaller screens */
+            }
+        }
+
+        @media (max-width: 400px) {
+            #chatbox {
+                height: 90%; /* Further adjust height */
+            }
+            .chat-input input {
+                font-size: 14px; /* Smaller font size for input */
+            }
+
+            .chat-input button {
+                font-size: 14px; /* Smaller font size for button */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <header class="header">
+            <h1>User Dashboard</h1>
+            <div class="burger-menu" onclick="toggleMenu()">
+                <div class="burger-line"></div>
+                <div class="burger-line"></div>
+                <div class="burger-line"></div>
+            </div>
+            <nav class="nav">
+                <ul id="nav-links">
+                    <li><a href="userDash.html">Home</a></li>
+                    <li><a href="userInfo.html">Profile</a></li>
+                    <li><a href="#">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        
+
+        <script>
+            function toggleMenu() {
+            const nav = document.querySelector('.nav');
+            nav.classList.toggle('active'); // Toggle the 'active' class
+        }
+
+        </script>
+        
+        <section id="chatbox">
+            <div class="chat-header">
+                HandyAI
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <!-- Messages will be displayed here -->
+            </div>
+            <div class="chat-input">
+                <input type="text" id="user-message" placeholder="Type your message..." />
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </section>
+
+        <script>
+            
+
+            function sendMessage() {
+                const messageInput = document.getElementById('user-message');
+                const message = messageInput.value;
+
+                // Display the user's message
+                if (message.trim() !== "") {
+                    const messagesContainer = document.getElementById('chat-messages');
+
+                    // User message
+                    const userMessage = document.createElement('div');
+                    userMessage.textContent = message; // User's message
+                    userMessage.className = 'message user'; // Assign user class
+                    messagesContainer.appendChild(userMessage);
+                    messageInput.value = ''; // Clear the input
+
+                    // Simulate a bot response (for demonstration purposes)
+                    const botResponse = document.createElement('div');
+                    botResponse.textContent = "HandyAI suggests: Try checking the circuit breaker for your issue.";
+                    botResponse.className = 'message bot'; // Assign bot class
+                    messagesContainer.appendChild(botResponse);
+                    
+                    // Scroll to the bottom of the chat
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                }
+            }
+        </script>
+      
+        <footer class="footer">
+            <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
